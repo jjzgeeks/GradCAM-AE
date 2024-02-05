@@ -1,0 +1,9 @@
+numpy==1.20.3
+scikit-learn==1.1.2
+scipy==1.8.0
+torch==2.0.1
+torchcam==0.3.2
+torchvision==0.15.2
+Pillow==9.0.1
+grad-cam==1.4.8
+seaborn

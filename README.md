@@ -7,7 +7,7 @@ These codes are about "GradCAM-AE: A New Shield Defense Against Poisoning Attack
 
 
 ## How to run :point_down:
-enter into each folder:
+Enter into each folder and run the following command:
 ```
 python FL_GradCAM_main.py 
 ```

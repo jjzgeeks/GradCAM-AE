@@ -253,7 +253,7 @@ def generate_malicious_noise(w, num_malicious, curr_round):
 Following Algorithm 1 from the paper
 """
 def training(model, rounds, batch_size, lr, ds, data_dict, C, K, E, num_malicious, plt_title, plt_color, svhn_data_test,
-             test_batch_size, criterion, num_classes, classes_test, partition):
+             test_batch_size, criterion, num_classes, partition):
     """
     Function implements the Federated Averaging Algorithm from the FedAvg paper.
     Specifically, this function is used for the server side training and weight update
@@ -423,7 +423,7 @@ def training(model, rounds, batch_size, lr, ds, data_dict, C, K, E, num_maliciou
 
     end = time.time()
     # save data as mat
-    savemat("./FL_Gradcam_results_{}_{}_{}_{}.mat".format(partition, rounds, m, num_malicious),
+    savemat("./FL_Gradcam_svhn_results_{}_{}_{}_{}.mat".format(partition, rounds, m, num_malicious),
             {"TPR": TPR, "FPR": FPR,  "cm_set": cm_set, "train loss": train_loss, "test loss": test_loss, "test accuracy": test_accuracy, " best_accuracy_set":  best_accuracy_set,
              "AUC": AUC, "Accuracy": Acc_set,"F1_score": F1_set,"MCC_set": MCC_set, "Eu_distance": eu_distance_set,"g_distance": g_dist, "g_angle": g_angle,  "final_outlier_index_set":final_outlier_index_set})
 
@@ -607,11 +607,11 @@ if __name__ == '__main__':
     #model = efficientnet_b4(pretrained=True)
     # Replace the last fully connected layer
     #cifar_cnn.fc = torch.nn.Linear(cifar_cnn.fc.in_features, num_classes)
-    model.cuda()
+    model.to(device)
     plot_str = partition + '_' + norm + '_' + 'commrounds_' + str(num_commrounds) + '_clientfraction_' + str(
         client_fraction) + '_numclients_' + str(num_clients) + '_clientepochs_' + str(
         num_epochs) + '_clientbs_' + str(client_batch_size) + '_clientlr_' + str(client_lr)
 
     trained_model = training(model, num_commrounds, client_batch_size, client_lr, data_train, data_dict,
                              client_fraction, num_clients, num_epochs, num_malicious, plot_str,
-                             'green', data_test, 128, criterion, num_classes, classes_test, partition)
+                             'green', data_test, 128, criterion, num_classes, partition)

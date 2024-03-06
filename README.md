@@ -1,6 +1,10 @@
 # GradCAM-AE
 These codes are about "GradCAM-AE: A New Shield Defense Against Poisoning Attacks on Federated Learning"
 
+Here is a structure of FL_GradCAM:
+![Image Alt text](/readme_pics/FL_GradCAM.png "GradCAM-assisted defense against poisoning attacks on FL. The server arbitrarily selects an image (e.g., an image with the label \"bird \") from the global testing dataset to create GradCAM heat maps for every uploaded model update. These GradCAM heat maps flow into an autoencoder for malicious
+model detection.")
+
 
 ## Requirements
 - Install requirements via  `pip install -r requirements.txt`

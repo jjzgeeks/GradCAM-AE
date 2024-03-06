@@ -618,7 +618,7 @@ if __name__ == '__main__':
     #model = resnet18(weights=ResNet18_Weights.DEFAULT)
     # model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
 
-    model.cuda()
+    model.to(device)
     plot_str = partition + '_' + 'commrounds_' + str(num_commrounds) + '_clientfraction_' + str(
         client_fraction) + '_numclients_' + str(num_clients) + '_clientepochs_' + str(
         num_epochs) + '_clientbs_' + str(client_batch_size) + '_clientlr_' + str(client_lr)
